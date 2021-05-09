@@ -23,7 +23,7 @@ ps = PancakeSwapAPI()
 Please note, the API functionality currently exposed by PancakeSwap is quite basic. This package will be updated 
 as they add new functionality.
 
-##`summary()`
+## `summary()`
 Returns a dictionary containing data for the top ~1000 PancakeSwap pairs, sorted by reserves.
 
 Example invocation:
@@ -48,7 +48,7 @@ Example output:
 }
 ```
 ---
-##`tokens(address)`
+## `tokens(address)`
 If address parameter is specified, returns the token information, based on address. Otherwise, 
 returns the tokens in the top ~1000 pairs on PancakeSwap, sorted by reserves.
 
@@ -89,7 +89,7 @@ Example output with address:
 }
 ```
 ---
-##`pairs()`
+## `pairs()`
 Returns data for the top ~1000 PancakeSwap pairs, sorted by reserves.
 
 Example invocation:

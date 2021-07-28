@@ -22,21 +22,9 @@ class PancakeSwapAPI:
         :param request_url: str
         """
         with requests.Session() as session:
-            try:
-                response = session.get(request_url, timeout=self.request_timeout)
-            except requests.exceptions.RequestException:
-                raise
-
-            try:
-                response.raise_for_status()
-                return json.loads(response.content.decode('utf-8'))
-            except Exception as err:
-                try:
-                    content = json.loads(response.content.decode('utf-8'))
-                    raise ValueError(content)
-                except json.decoder.JSONDecodeError:
-                    pass
-                raise
+            response = session.get(request_url, timeout=self.request_timeout)
+            response.raise_for_status()
+            return json.loads(response.content.decode('utf-8'))
 
     def summary(self):
         """
@@ -54,14 +42,11 @@ class PancakeSwapAPI:
         :return: Dict
         """
         if address:
-            try:
-                # Trim any whitespace from address
-                address = address.replace(' ', '')
-                # Validate provided address matches ERC20 format - does not check if the address is valid on chain!
-                if not re.match("^0x([A-Fa-f0-9]{40})$", address):
-                    raise ValueError(address)
-            except ValueError:
-                return "Provided address hash is not in a valid format"
+            # Trim any whitespace from address
+            address = address.replace(' ', '')
+            # Validate provided address matches ERC20 format - does not check if the address is valid on chain!
+            if not re.match("^0x([A-Fa-f0-9]{40})$", address):
+                raise ValueError(f"Provided address hash ({address}) is not in a valid format.")
 
         url = f"{self.base_url}tokens{'/' + address if address is not None else ''}"
         return self.__get(url)

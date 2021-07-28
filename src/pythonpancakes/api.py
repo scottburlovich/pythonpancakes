@@ -58,4 +58,3 @@ class PancakeSwapAPI:
         """
         url = f"{self.base_url}pairs"
         return self.__get(url)
-        

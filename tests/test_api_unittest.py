@@ -6,9 +6,6 @@ class TestAPI(unittest.TestCase):
     def setUp(self):
         self.ps = PancakeSwapAPI()
 
-    def tearDown(self):
-        self.ps.__exit__()
-
     def test_summary(self):
         """Verify that valid data is returned from the summary() request"""
         response = self.ps.summary()

@@ -21,10 +21,9 @@ class PancakeSwapAPI:
         GET request wrapper
         :param request_url: str
         """
-        with requests.Session() as session:
-            response = session.get(request_url, timeout=self.request_timeout)
-            response.raise_for_status()
-            return json.loads(response.content.decode('utf-8'))
+        response = requests.get(request_url, timeout=self.request_timeout)
+        response.raise_for_status()
+        return json.loads(response.content.decode('utf-8'))
 
     def summary(self):
         """

@@ -1,3 +1,8 @@
+# THIS MODULE IS DEPRECATED
+11/20/2022: Pancakeswap has recently discontinued their info API.. this module will no longer be maintained.
+
+---
+
 # 🐍 Python Pancakes 🥞
 A simple request wrapper for the Pancake-Swap API.
 
